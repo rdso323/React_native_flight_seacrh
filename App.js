@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Search from './components/Search';
+import Results from './components/Results';
+import Data from "./assets/Data.json"
 
 export default class App extends React.Component {
   constructor() {
@@ -13,6 +15,7 @@ export default class App extends React.Component {
       passengers: 0,
       submitted: false,
       return: false,
+      flights: []
     };
   }
 
@@ -30,9 +33,18 @@ export default class App extends React.Component {
 
   handleSubmit = () => {
     this.setState({
-      submitted: true
+      submitted: true,
+      flights: Data,
     })
     console.log(this.state.submitted)
+    console.log(this.state.flights)
+    // fetch("Data.json")
+    //   .then((response) => response.json())
+    //   .then((handle =>
+    //     this.setState({
+    //       flights: handle.data,
+    //       submitted: true
+    //     })))
   }
 
 
@@ -42,6 +54,15 @@ export default class App extends React.Component {
         <Search handleChange = {this.handleChange}
         handleSubmit = {this.handleSubmit}
         handleSwitch = {this.handleSwitch}
+        return = {this.state.return}/>
+        
+        <Results submitted={this.state.submitted}
+        flights = {this.state.flights}
+        origin = {this.state.origin}
+        destination = {this.state.destination}
+        dept_date = {this.state.dept_date}
+        return_date = {this.state.return_date}
+        passengers = {this.state.passengers}
         return = {this.state.return}/>
       </View>
     );

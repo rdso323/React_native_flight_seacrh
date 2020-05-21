@@ -78,7 +78,7 @@ export class Search extends Component {
             <Button
               title="Submit"
               color="red"
-              marginTop="10px"
+              //marginTop="10px"
               onPress={() => this.props.handleSubmit()}
             />
           </View>
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderColor: "black",
     borderWidth: 1,
-    width: 200,
+    //width: "200",
   },
 });
 
